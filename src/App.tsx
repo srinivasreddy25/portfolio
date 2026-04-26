@@ -7,22 +7,23 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import Confetti from './components/Confetti';
+import AnimatedBackground from './components/AnimatedBackground';
 
 const App = () => {
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-      }}
-    >
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Education />
-      <Contact />
+    <Box sx={{ minHeight: '100vh', background: '#0d1117', position: 'relative' }}>
+      <AnimatedBackground />
+      <Confetti />
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Contact />
+      </Box>
     </Box>
   );
 };

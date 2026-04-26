@@ -1,224 +1,166 @@
 import React from 'react';
-import { Box, Container, Typography, Paper } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
-import SchoolIcon from '@mui/icons-material/School';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 
 const education = [
   {
     institution: 'MLR Institute of Technology',
-    degree: 'Bachelor of Technology in Mechanical Engineering',
+    degree: 'B.Tech — Mechanical Engineering',
     year: 'Jun 2019 — May 2023',
-    description: 'Graduated with a degree in Mechanical Engineering',
+    gpa: 'GPA: 7.4',
+    icon: '🎓',
   },
   {
     institution: 'Narayana Junior College',
-    degree: 'PCM (Physics, Chemistry, Mathematics)',
+    degree: 'PCM — Physics, Chemistry, Mathematics',
     year: 'Jun 2017 — May 2019',
-    description: 'Completed intermediate education with focus on science subjects',
+    gpa: '',
+    icon: '📚',
   },
   {
     institution: 'Matrusri High School',
-    degree: 'SSC (Secondary School Certificate)',
+    degree: 'SSC — Secondary School Certificate',
     year: 'Jun 2016 — Apr 2017',
-    description: 'Completed high school education',
+    gpa: '',
+    icon: '🏫',
   },
 ];
 
 const certifications = [
-  {
-    name: 'AWS Course Completion Certificate',
-    issuer: 'Amazon Web Services',
-  },
-  {
-    name: 'SQL Course Completion Certificate',
-    issuer: 'Online Learning Platform',
-  },
-  {
-    name: 'Docker Course Completion Certificate',
-    issuer: 'Online Learning Platform',
-  },
-];
-
-const interests = [
-  {
-    name: 'Music & Reading',
-    description: 'In my free time, I enjoy listening to music and reading novels. Check out my Spotify playlist!',
-    link: 'https://open.spotify.com/user/31rjacphspbixrmd2r5qu5yq6hqe',
-  },
+  { name: 'AWS Cloud Solutions Architect', icon: '☁️', color: '#ff9900' },
+  { name: 'Microsoft Azure Administrator', icon: '🔷', color: '#0078d4' },
+  { name: 'SQL Course Completion', icon: '🗄️', color: '#00e676' },
+  { name: 'Docker Containerization', icon: '🐳', color: '#21CBF3' },
+  { name: 'Demystifying Networking (NPTEL)', icon: '🌐', color: '#7c4dff' },
+  { name: 'Kubernetes Administration (CKA-Aligned)', icon: '⚙️', color: '#2196f3' },
 ];
 
 const Education = () => {
   return (
-    <Box
-      id="education"
-      sx={{
-        py: 8,
-        backgroundColor: 'background.default',
-      }}
-    >
+    <Box id="education" sx={{ py: 12, position: 'relative', zIndex: 1 }}>
       <Container maxWidth="lg">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
         >
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{
-              mb: 6,
-              textAlign: 'center',
-              background: 'linear-gradient(45deg, #2196f3 30%, #21CBF3 90%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
+          <Typography variant="h2" sx={{
+            mb: 1, textAlign: 'center', fontWeight: 800,
+            background: 'linear-gradient(135deg, #2196f3 0%, #21CBF3 50%, #7c4dff 100%)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+          }}>
             Education & Certifications
           </Typography>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-              gap: 4,
-            }}
-          >
-            <Box>
-              <Typography
-                variant="h4"
-                component="h3"
-                sx={{ mb: 4, display: 'flex', alignItems: 'center', gap: 1 }}
+          <Box sx={{ width: 60, height: 4, background: 'linear-gradient(90deg,#2196f3,#7c4dff)', borderRadius: 2, mx: 'auto', mb: 8 }} />
+        </motion.div>
+
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 6 }}>
+          {/* Education Timeline */}
+          <Box>
+            <Typography sx={{ color: '#21CBF3', fontWeight: 700, letterSpacing: 2, fontSize: '0.8rem', mb: 4 }}>
+              🎓 EDUCATION
+            </Typography>
+            {education.map((edu, i) => (
+              <motion.div
+                key={edu.institution}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
               >
-                <SchoolIcon color="primary" />
-                Education
-              </Typography>
-              {education.map((edu, index) => (
-                <motion.div
-                  key={edu.institution}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      p: 3,
-                      mb: 3,
-                      borderRadius: 2,
-                      backgroundColor: 'background.paper',
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ color: 'primary.main' }}>
+                <Box sx={{ display: 'flex', gap: 2, mb: 4, position: 'relative' }}>
+                  {/* Timeline line */}
+                  {i < education.length - 1 && (
+                    <Box sx={{
+                      position: 'absolute', left: 19, top: 44, width: 2, height: 'calc(100% - 8px)',
+                      background: 'linear-gradient(180deg,rgba(33,150,243,0.4),transparent)',
+                    }} />
+                  )}
+                  {/* Icon */}
+                  <Box sx={{
+                    width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: 'rgba(33,150,243,0.15)',
+                    border: '2px solid rgba(33,150,243,0.4)',
+                    fontSize: '1.1rem',
+                  }}>
+                    {edu.icon}
+                  </Box>
+                  <Box sx={{
+                    p: 2.5, borderRadius: 3, flex: 1,
+                    background: 'rgba(33,150,243,0.05)',
+                    border: '1px solid rgba(33,150,243,0.15)',
+                    backdropFilter: 'blur(10px)',
+                    transition: 'box-shadow 0.3s',
+                    '&:hover': { boxShadow: '0 0 20px rgba(33,150,243,0.2)' },
+                  }}>
+                    <Typography sx={{ color: '#21CBF3', fontWeight: 700, fontSize: '0.95rem' }}>
                       {edu.institution}
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'text.secondary', mb: 1 }}>
+                    <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', mt: 0.5 }}>
                       {edu.degree}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1 }}>
-                      {edu.year}
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                      {edu.description}
-                    </Typography>
-                  </Paper>
-                </motion.div>
-              ))}
-            </Box>
-            <Box>
-              <Typography
-                variant="h4"
-                component="h3"
-                sx={{ mb: 4, display: 'flex', alignItems: 'center', gap: 1 }}
-              >
-                <WorkspacePremiumIcon color="primary" />
-                Certifications
-              </Typography>
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={cert.name}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      p: 3,
-                      mb: 3,
-                      borderRadius: 2,
-                      backgroundColor: 'background.paper',
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ color: 'primary.main' }}>
-                      {cert.name}
-                    </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-                      {cert.issuer}
-                    </Typography>
-                  </Paper>
-                </motion.div>
-              ))}
-            </Box>
-            <Box>
-              <Typography
-                variant="h4"
-                component="h3"
-                sx={{ mb: 4, display: 'flex', alignItems: 'center', gap: 1 }}
-              >
-                <WorkspacePremiumIcon color="primary" />
-                Interests
-              </Typography>
-              {interests.map((interest, index) => (
-                <motion.div
-                  key={interest.name}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      p: 3,
-                      mb: 3,
-                      borderRadius: 2,
-                      backgroundColor: 'background.paper',
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ color: 'primary.main' }}>
-                      {interest.name}
-                    </Typography>
-                    <Typography variant="subtitle1" sx={{ color: 'text.secondary', mb: 1 }}>
-                      {interest.description}
-                    </Typography>
-                    <Typography 
-                      variant="body2" 
-                      component="a"
-                      href={interest.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      sx={{ 
-                        color: 'primary.main',
-                        textDecoration: 'none',
-                        '&:hover': {
-                          textDecoration: 'underline',
-                        }
-                      }}
-                    >
-                      Visit Spotify Profile
-                    </Typography>
-                  </Paper>
-                </motion.div>
-              ))}
-            </Box>
+                    <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+                      <Typography sx={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
+                        📅 {edu.year}
+                      </Typography>
+                      {edu.gpa && (
+                        <Typography sx={{ color: '#7c4dff', fontSize: '0.75rem', fontWeight: 600 }}>
+                          {edu.gpa}
+                        </Typography>
+                      )}
+                    </Box>
+                  </Box>
+                </Box>
+              </motion.div>
+            ))}
           </Box>
-        </motion.div>
+
+          {/* Certifications */}
+          <Box>
+            <Typography sx={{ color: '#7c4dff', fontWeight: 700, letterSpacing: 2, fontSize: '0.8rem', mb: 4 }}>
+              🏆 CERTIFICATIONS
+            </Typography>
+            {certifications.map((cert, i) => (
+              <motion.div
+                key={cert.name}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ x: 6, scale: 1.02 }}
+              >
+                <Box sx={{
+                  display: 'flex', alignItems: 'center', gap: 2, mb: 2, p: 2, borderRadius: 3,
+                  background: `${cert.color}0d`,
+                  border: `1px solid ${cert.color}33`,
+                  backdropFilter: 'blur(10px)',
+                  cursor: 'default',
+                  transition: 'box-shadow 0.3s',
+                  '&:hover': { boxShadow: `0 0 20px ${cert.color}33` },
+                }}>
+                  <Box sx={{
+                    width: 36, height: 36, borderRadius: 2, flexShrink: 0,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: `${cert.color}22`,
+                    border: `1px solid ${cert.color}44`,
+                    fontSize: '1rem',
+                  }}>
+                    {cert.icon}
+                  </Box>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', fontWeight: 500 }}>
+                    {cert.name}
+                  </Typography>
+                  <Box sx={{ ml: 'auto', width: 8, height: 8, borderRadius: '50%', background: cert.color, flexShrink: 0 }} />
+                </Box>
+              </motion.div>
+            ))}
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default Education; 
+export default Education;
