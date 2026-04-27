@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography, Button, Chip } from '@mui/material';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const roles = [
   'DevOps Engineer',
